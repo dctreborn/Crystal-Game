@@ -4,6 +4,11 @@ var wins;
 var losses;
 var crystals = [0,0,0,0];
 
+$("#crystal-1").on("click", function(){game.addValue(crystals[0])});
+$("#crystal-2").on("click", function(){game.addValue(crystals[1])});
+$("#crystal-3").on("click", function(){game.addValue(crystals[2])});
+$("#crystal-4").on("click", function(){game.addValue(crystals[3])});
+
 var game = {
 	//pick random number from 19-120
 	targetNum: function() {
@@ -19,11 +24,13 @@ var game = {
 
 	//initialize variables
 	initialize: function() {
-		game.targetNum;
-		game.crystalNum;
+		game.targetNum();
+		game.crystalNum();
 		wins = 0;
 		losses = 0;
 		score = 0;
+		console.log(numGoal);
+		console.log(crystals);
 	},
 
 	//checks score vs numGoal
@@ -36,6 +43,12 @@ var game = {
 		else if (numGoal < score) {
 			losses++;
 		}
+	},
+
+	//adds crystal value to score
+	addValue: function(points) {
+		score += points;
+		console.log(score);
 	}
 
 }
