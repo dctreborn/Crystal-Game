@@ -10,10 +10,6 @@ body {
 	background: url(../images/bg2.png) center;
 }
 
-.btn {
-	background: url(../images/bg3.jpg) center;
-}
-
 .jumbotron {
 	background: url(../images/bg.png) center;
 	background-size: cover;
@@ -39,7 +35,7 @@ body {
 }
 
 #info {
-	font-size: 3em;
+	font-size: 4em;
 }
 
 #footer {
