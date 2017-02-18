@@ -94,9 +94,9 @@ var game = {
 
 	//plays audio
 	setAudio: function (path){
-	var audio = document.createElement("audio");
-	audio.setAttribute("src","assets/sound/" + path);
-	audio.play();
+		var audio = document.createElement("audio");
+		audio.setAttribute("src","assets/sound/" + path);
+		audio.play();
 	}
 
 }
