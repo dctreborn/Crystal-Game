@@ -45,13 +45,19 @@ var game = {
 		if (numGoal == score) {
 			wins++;
 			game.setAudio(sound.win);
+			game.setMessage("You win!");
 			game.initialize();
 		}
 		//increase losses if numGoal is less than score
 		else if (numGoal < score) {
 			losses++;
 			game.setAudio(sound.lose[Math.floor(Math.random() * sound.lose.length)]);
+			game.setMessage("You lose...");
 			game.initialize();
+		}
+
+		else {
+			game.setAudio(sound.gem[Math.floor(Math.random() * sound.gem.length)]);
 		}
 	},
 
@@ -59,6 +65,14 @@ var game = {
 	addValue: function(index) {
 		var points = crystals[index - 1];
 		score += points;
+
+		if (score / numGoal >= 0.75) {
+			game.setMessage("sGetting full");
+		} else if (score / numGoal >= 0.5) {
+			game.setMessage("sHalfway there");
+		} else if (score / numGoal >= 0.25) {
+			game.setMessage("sGetting warmed up");
+		}
 	},
 
 	//display image to button
@@ -97,8 +111,12 @@ var game = {
 		var audio = document.createElement("audio");
 		audio.setAttribute("src","assets/sound/" + path);
 		audio.play();
-	}
+	},
 
+	//sets message ID
+	setMessage: function(string){
+		$("#message").html(string);
+	}
 }
 
 game.imageArray();
@@ -107,7 +125,7 @@ game.initialize();
 $(".btn").on("click", function(){
 	var value = $(this).attr("id");
 	var num = value.charAt(value.length - 1);
-	game.setAudio(sound.gem[Math.floor(Math.random() * sound.gem.length)]);
+	
 	game.addValue(num)
 	game.updateDisplay();
 	game.check();

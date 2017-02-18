@@ -10,6 +10,10 @@ body {
 	background: url(../images/bg2.png) center;
 }
 
+p {
+	display: inline;
+}
+
 .jumbotron {
 	background: url(../images/bg.png) center;
 	background-size: cover;
