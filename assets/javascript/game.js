@@ -1,14 +1,9 @@
-var numGoal;
-var score;
-var wins;
-var losses;
+var numGoal = 0;
+var score = 0;
+var wins = 0;
+var losses = 0;
 var crystals = [0,0,0,0]; 
 var images = [];
-
-$("#crystal-1").on("click", function(){game.addValue(crystals[0])});
-$("#crystal-2").on("click", function(){game.addValue(crystals[1])});
-$("#crystal-3").on("click", function(){game.addValue(crystals[2])});
-$("#crystal-4").on("click", function(){game.addValue(crystals[3])});
 
 var game = {
 	//pick random number from 19-120
@@ -32,13 +27,11 @@ var game = {
 
 	//initialize variables
 	initialize: function() {
+		score = 0;
 		game.targetNum();
 		game.crystalNum();
-		wins = 0;
-		losses = 0;
-		score = 0;
-		console.log(numGoal);
-		console.log(crystals);
+		game.crystalImage();
+		game.updateDisplay();
 	},
 
 	//checks score vs numGoal
@@ -46,33 +39,61 @@ var game = {
 		//increase wins if numGoal matches score
 		if (numGoal == score) {
 			wins++;
+			game.initialize();
 		}
 		//increase losses if numGoal is less than score
 		else if (numGoal < score) {
 			losses++;
+			game.initialize();
 		}
 	},
 
 	//adds crystal value to score
-	addValue: function(points) {
+	addValue: function(index) {
+		var points = crystals[index - 1];
 		score += points;
-		console.log(score);
 	},
 
-	//display image to thumbnail
+	//display image to button
 	crystalImage: function() {
 		var img;
 		var index;
+		var array = [];
 
 		for (var i = 0; i < crystals.length; i++) {
 			img = $("<img>");
 			index = images[Math.floor(Math.random() * 12)]
-			img.attr("src","assets/images/" + index);
-			$("#crystal-" + (i + 1)).html(img);
+
+			//show unique image
+			if (!array.includes(index)) {
+				array.push(index);
+				img.attr("src","assets/images/" + index);
+				$("#crystal-" + (i + 1)).html(img);
+			}
+
+			else {
+				i--;
+			}
 		}
-	}
+	},
+
+	updateDisplay: function() {
+
+		$("#wins").html("Wins: " + wins);
+		$("#loss").html("Losses: " + losses);
+		$("#goal").html("Taget Score: " + numGoal);
+		$("#scores").html("Total: " + score);
+	},
 
 }
 
 game.imageArray();
-game.crystalImage();
+game.initialize();
+
+$(".btn").on("click", function(){
+	var value = $(this).attr("id");
+	var num = value.charAt(value.length - 1);
+	game.addValue(num)
+	game.updateDisplay();
+	game.check();
+})

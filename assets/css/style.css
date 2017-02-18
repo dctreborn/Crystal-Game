@@ -11,6 +11,11 @@ body {
 	position: absolute;
 }
 
+.btn {
+	border: 0;
+}
+
+
 #footer {
 	float: none;
 	text-align: center;
