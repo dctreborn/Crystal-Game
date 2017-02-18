@@ -79,7 +79,7 @@ var game = {
 
 	updateDisplay: function() {
 
-		$("#wins").html("Wins: " + wins);
+		$("#wins").html("Wins: " + wins + " ");
 		$("#loss").html("Losses: " + losses);
 		$("#goal").html("Taget Score: " + numGoal);
 		$("#scores").html("Total: " + score);

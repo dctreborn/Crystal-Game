@@ -1,11 +1,33 @@
 html {
 	position: relative;
-	min-height: 100%;	
+	min-height: 100%;
+	font-size: 100%; /*16px*/
 }
 
 body {
-	padding-bottom: 70px;
+	padding-bottom: 90px;
 	font-family: "Final Fantasy Tactics";
+	background: url(../images/bg2.png) center;
+}
+
+.btn {
+	background: url(../images/bg3.jpg) center;
+}
+
+.jumbotron {
+	background: url(../images/bg.png) center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	text-shadow: -3px 0 #fff, 0 3px #fff, 3px 0 #fff, 0 -3px #fff;
+}
+
+.jumbotron h1 {
+	font-size: 10rem;
+}
+
+.jumbotron p {
+	font-size: 3.5em;
 }
 
 .navbar-fixed-bottom {
@@ -16,13 +38,17 @@ body {
 	border: 0;
 }
 
+#info {
+	font-size: 3em;
+}
 
 #footer {
 	float: none;
 	text-align: center;
+	font-size: 2rem;
 }
 
 @font-face {
 	font-family: "Final Fantasy Tactics";
-	src: url(Final Fantasy Tactics.ttf);
+	src: url("Final Fantasy Tactics.ttf");
 }
