@@ -1,10 +1,11 @@
 html {
 	position: relative;
-	min-height: 100%;
+	min-height: 100%;	
 }
 
 body {
 	padding-bottom: 70px;
+	font-family: "Final Fantasy Tactics";
 }
 
 .navbar-fixed-bottom {
@@ -19,4 +20,9 @@ body {
 #footer {
 	float: none;
 	text-align: center;
+}
+
+@font-face {
+	font-family: "Final Fantasy Tactics";
+	src: url(Final Fantasy Tactics.ttf);
 }
