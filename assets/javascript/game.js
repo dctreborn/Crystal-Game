@@ -67,11 +67,11 @@ var game = {
 		score += points;
 
 		if (score / numGoal >= 0.75) {
-			game.setMessage("sGetting full");
+			game.setMessage("Getting full");
 		} else if (score / numGoal >= 0.5) {
-			game.setMessage("sHalfway there");
+			game.setMessage("Halfway there");
 		} else if (score / numGoal >= 0.25) {
-			game.setMessage("sGetting warmed up");
+			game.setMessage("Getting warmed up");
 		}
 	},
 
