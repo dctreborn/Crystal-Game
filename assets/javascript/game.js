@@ -2,7 +2,8 @@ var numGoal;
 var score;
 var wins;
 var losses;
-var crystals = [0,0,0,0];
+var crystals = [0,0,0,0]; 
+var images = [];
 
 $("#crystal-1").on("click", function(){game.addValue(crystals[0])});
 $("#crystal-2").on("click", function(){game.addValue(crystals[1])});
@@ -19,6 +20,13 @@ var game = {
 	crystalNum: function () {
 		for (var i = 0; i < 4; i++) {
 			crystals[i] = Math.floor(Math.random() * 12 + 1);
+		}
+	},
+
+	//build images array
+	imageArray: function() {
+		for (var i = 0; i < 12; i++) {
+			images.push(i + ".gif");
 		}
 	},
 
@@ -49,6 +57,22 @@ var game = {
 	addValue: function(points) {
 		score += points;
 		console.log(score);
+	},
+
+	//display image to thumbnail
+	crystalImage: function() {
+		var img;
+		var index;
+
+		for (var i = 0; i < crystals.length; i++) {
+			img = $("<img>");
+			index = images[Math.floor(Math.random() * 12)]
+			img.attr("src","assets/images/" + index);
+			$("#crystal-" + (i + 1)).html(img);
+		}
 	}
 
 }
+
+game.imageArray();
+game.crystalImage();
