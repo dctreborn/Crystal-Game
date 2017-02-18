@@ -4,6 +4,11 @@ var wins = 0;
 var losses = 0;
 var crystals = [0,0,0,0]; 
 var images = [];
+var sound = {
+	gem: ["Shop1.ogg", "Shop2.ogg"],
+	win: "treasure_se_6.mp3",
+	lose: ["Buzzer1.ogg", "Buzzer2.ogg"]
+}
 
 var game = {
 	//pick random number from 19-120
@@ -39,11 +44,13 @@ var game = {
 		//increase wins if numGoal matches score
 		if (numGoal == score) {
 			wins++;
+			game.setAudio(sound.win);
 			game.initialize();
 		}
 		//increase losses if numGoal is less than score
 		else if (numGoal < score) {
 			losses++;
+			game.setAudio(sound.lose[Math.floor(Math.random() * sound.lose.length)]);
 			game.initialize();
 		}
 	},
@@ -85,6 +92,13 @@ var game = {
 		$("#scores").html("Total: " + score);
 	},
 
+	//plays audio
+	setAudio: function (path){
+	var audio = document.createElement("audio");
+	audio.setAttribute("src","assets/sound/" + path);
+	audio.play();
+	}
+
 }
 
 game.imageArray();
@@ -93,6 +107,7 @@ game.initialize();
 $(".btn").on("click", function(){
 	var value = $(this).attr("id");
 	var num = value.charAt(value.length - 1);
+	game.setAudio(sound.gem[Math.floor(Math.random() * sound.gem.length)]);
 	game.addValue(num)
 	game.updateDisplay();
 	game.check();
