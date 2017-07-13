@@ -43,6 +43,11 @@ p {
 	font-size: 4em;
 }
 
+#git {
+	width: 1em;
+	height: 1em;
+}
+
 #footer {
 	float: none;
 	text-align: center;
